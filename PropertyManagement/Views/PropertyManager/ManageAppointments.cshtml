@@ -1,0 +1,31 @@
+﻿<h2>Manage Appointments</h2>
+<a href="@Url.Action("CreateAppointment", "PropertyManager")" class="btn btn-success">Create Appointment</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tenant</th>
+            <th>Apartment</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Tenant.Name</td>
+                <td>@appointment.Apartment.Number</td>
+                <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                <td>@appointment.AppointmentTime</td>
+                <td>@appointment.Status</td>
+                <td>
+                    <a href="@Url.Action("EditAppointment", "PropertyManager", new { id = appointment.AppointmentId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("DeleteAppointment", "PropertyManager", new { id = appointment.AppointmentId })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this appointment?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

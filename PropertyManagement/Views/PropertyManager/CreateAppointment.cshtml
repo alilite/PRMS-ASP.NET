@@ -1,0 +1,19 @@
+﻿@model PropertyManagement.Models.Appointment
+
+<h2>Create Appointment</h2>
+@using (Html.BeginForm())
+{
+    @Html.Label("Tenant")
+    @Html.DropDownList("TenantId", ViewBag.Tenants as SelectList, "Select a Tenant", new { @class = "form-control" })
+
+    @Html.Label("Apartment")
+    @Html.DropDownList("ApartmentId", ViewBag.Apartments as SelectList, "Select an Apartment", new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.AppointmentDate)
+    @Html.TextBoxFor(m => m.AppointmentDate, new { @class = "form-control", type = "date" })
+
+    @Html.LabelFor(m => m.AppointmentTime)
+    @Html.TextBoxFor(m => m.AppointmentTime, new { @class = "form-control", type = "time" })
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}

@@ -1,0 +1,29 @@
+﻿@model PropertyManagement.Models.Apartment
+
+<h2>Add Apartment</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Number)
+    @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.RentAmount)
+    @Html.TextBoxFor(m => m.RentAmount, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.AvailabilityStatus)
+    @Html.DropDownListFor(
+        m => m.AvailabilityStatus,
+        new SelectList(new[] { "Available", "Occupied", "Under Maintenance" }),
+        "Select Status",
+        new { @class = "form-control" }
+    )
+    @Html.LabelFor(m => m.Bathroom)
+    @Html.TextBoxFor(m => m.Bathroom, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Bedroom)
+    @Html.TextBoxFor(m => m.Bedroom, new { @class = "form-control" })
+
+    @Html.Label("Property")
+    @Html.DropDownList("PropertyId", ViewBag.Properties as SelectList, "Select a Property", new { @class = "form-control" })
+
+    <button type="submit" class="btn btn-primary">Add</button>
+}

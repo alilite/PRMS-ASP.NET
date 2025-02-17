@@ -1,0 +1,33 @@
+﻿@model PropertyManagement.Models.Message
+
+<h2>Send Message</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Receiver ID")
+        @Html.TextBoxFor(m => m.ReceiverId, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Receiver Role")
+        @Html.TextBoxFor(m => m.ReceiverRole, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Sender ID")
+        <input type="text" class="form-control" value="@ViewBag.SenderId" readonly />
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Sender Role")
+        <input type="text" class="form-control" value="@ViewBag.SenderRole" readonly />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content, "Message Content")
+        @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = 5 })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send Message</button>
+}

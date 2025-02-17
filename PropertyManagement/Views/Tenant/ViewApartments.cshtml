@@ -1,0 +1,53 @@
+﻿<h2>Available Apartments</h2>
+
+<!-- Search Form -->
+<form method="get" action="@Url.Action("ViewApartments", "Tenant")">
+    <div class="form-group">
+        <label>Search Criteria</label>
+        <input type="text" name="searchCriteria" class="form-control" placeholder="Location or Property Name" />
+    </div>
+    <div class="form-group">
+        <label>Minimum Rent</label>
+        <input type="number" name="minRent" class="form-control" placeholder="Minimum Rent" />
+    </div>
+    <div class="form-group">
+        <label>Maximum Rent</label>
+        <input type="number" name="maxRent" class="form-control" placeholder="Maximum Rent" />
+    </div>
+    <div class="form-group">
+        <label>Availability</label>
+        <select name="availability" class="form-control">
+            <option value="">All</option>
+            <option value="Available">Available</option>
+            <option value="Occupied">Occupied</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Rent Amount</th>
+            <th>Status</th>
+            <th>Property</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var apartment in Model)
+        {
+            <tr>
+                <td>@apartment.Number</td>
+                <td>@apartment.RentAmount</td>
+                <td>@apartment.AvailabilityStatus</td>
+                <td>@apartment.Property.Name</td>
+                <td>
+                    <a href="@Url.Action("MakeAppointment", "Tenant", new { id = apartment.ApartmentId })" class="btn btn-success">Make Appointment</a>
+                    <a href="@Url.Action("SendMessage", "Tenant", new { id = apartment.ApartmentId })" class="btn btn-info">Send Message</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

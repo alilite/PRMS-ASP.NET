@@ -1,0 +1,22 @@
+﻿@model PropertyManagement.Models.PropertyManager
+
+<h2>Add Property Manager</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Phone)
+    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+    @Html.Label("Owner")
+    @Html.DropDownList("OwnerId", new SelectList(ViewBag.Owners, "OwnerId", "Name"), "Select Owner", new { @class = "form-control" })
+
+    <button type="submit" class="btn btn-primary mt-3">Create</button>
+}

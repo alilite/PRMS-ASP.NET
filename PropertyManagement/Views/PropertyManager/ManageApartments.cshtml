@@ -1,0 +1,41 @@
+﻿<h2>Manage Apartments</h2>
+
+<!-- Search Form -->
+<form method="get" action="@Url.Action("ManageApartments", "PropertyManager")">
+    <div class="form-group">
+        <input type="text" name="searchTerm" class="form-control" placeholder="Search apartments..."
+               value="@ViewBag.SearchTerm" />
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </div>
+</form>
+
+<a href="@Url.Action("CreateApartment", "PropertyManager")" class="btn btn-success mb-3">Add Apartment</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Rent Amount</th>
+            <th>Status</th>
+            <th>Property</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var apartment in Model)
+        {
+            <tr>
+                <td>@apartment.Number</td>
+                <td>@apartment.RentAmount</td>
+                <td>@apartment.AvailabilityStatus</td>
+                <td>@apartment.Property.Name</td>
+                <td>
+                    <a href="@Url.Action("EditApartment", "PropertyManager", new { id = apartment.ApartmentId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("DeleteApartment", "PropertyManager", new { id = apartment.ApartmentId })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this apartment?');">Delete</a>
+                    <a href="@Url.Action("UpdateApartmentStatus", "PropertyManager", new { id = apartment.ApartmentId })" class="btn btn-warning">Update Status</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

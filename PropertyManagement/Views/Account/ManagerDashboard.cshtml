@@ -1,0 +1,27 @@
+﻿@model PropertyManagement.Models.PropertyManager
+
+<h2>Manager Dashboard</h2>
+
+<!-- Display Manager Details -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h3>Account Details</h3>
+    </div>
+    <div class="card-body">
+        <p><strong>ID:</strong> @Model.ManagerId</p>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Phone:</strong> @Model.Phone</p>
+        <p><strong>Owner:</strong> @Model.Owner.Name</p> <!-- Assuming Owner navigation property is loaded -->
+    </div>
+</div>
+
+<!-- Links to Other Features -->
+<ul>
+    <li><a href="@Url.Action("ManageProperties", "PropertyManager")">Manage Properties</a></li>
+    <li><a href="@Url.Action("ManageApartments", "PropertyManager")">Manage Apartments</a></li>
+    <li><a href="@Url.Action("ManageAppointments", "PropertyManager")">Manage Appointments</a></li>
+    <li><a href="@Url.Action("ViewMessages", "PropertyManager")">View Messages</a></li>
+    <li><a href="@Url.Action("ReportEvent", "PropertyManager")">Report Event to Owner</a></li>
+
+</ul>

@@ -1,0 +1,40 @@
+﻿@model PropertyManagement.Models.Apartment
+
+<h2>Edit Apartment</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ApartmentId)
+
+    @Html.LabelFor(m => m.Number)
+    @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.RentAmount)
+    @Html.TextBoxFor(m => m.RentAmount, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.AvailabilityStatus)
+    @Html.DropDownListFor(
+        m => m.AvailabilityStatus,
+        new SelectList(new[] { "Available", "Occupied", "Under Maintenance" }, Model.AvailabilityStatus),
+        "Select Status",
+        new { @class = "form-control" }
+    )
+
+    @Html.LabelFor(m => m.Bathroom)
+    @Html.TextBoxFor(m => m.Bathroom, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Bedroom)
+    @Html.TextBoxFor(m => m.Bedroom, new { @class = "form-control" })
+
+    <!-- Display Owner and Property as read-only -->
+    <div class="form-group">
+        <label>Owner</label>
+        <input type="text" class="form-control" value="@Model.Property.Owner.Name" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Property</label>
+        <input type="text" class="form-control" value="@Model.Property.Name" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}

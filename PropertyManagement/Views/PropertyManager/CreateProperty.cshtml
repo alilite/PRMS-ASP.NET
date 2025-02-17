@@ -1,0 +1,24 @@
+﻿@model PropertyManagement.Models.Property
+
+<h2>Create Property</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Location)
+    @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Description)
+    @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+
+    @Html.Label("Owner")
+    @Html.DropDownList(
+        "OwnerId",
+        ViewBag.Owners as SelectList,
+        "Select an Owner",
+        new { @class = "form-control" }
+    )
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}

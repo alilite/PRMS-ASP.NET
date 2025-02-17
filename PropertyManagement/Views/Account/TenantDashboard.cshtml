@@ -1,0 +1,21 @@
+﻿@model PropertyManagement.Models.Tenant
+
+<h2>Tenant Dashboard</h2>
+<div class="card mb-4">
+    <div class="card-header">
+        <h3>Account Details</h3>
+    </div>
+    <div class="card-body">
+        <p><strong>ID:</strong> @Model.TenantId</p>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Phone:</strong> @Model.Phone</p>
+    </div>
+</div>
+
+<h3>Actions</h3>
+<ul>
+    <li><a href="@Url.Action("ViewApartments", "Tenant")">View Apartments</a></li>
+    <li><a href="@Url.Action("ViewMessages", "Tenant")">View Messages</a></li>
+
+</ul>

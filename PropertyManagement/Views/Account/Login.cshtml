@@ -1,0 +1,13 @@
+﻿<h2>Login</h2>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <label>Email</label>
+    <input type="email" name="email" class="form-control" />
+
+    <label>Password</label>
+    <input type="password" name="password" class="form-control" />
+
+    <button type="submit" class="btn btn-primary">Login</button>
+}
+
+<p>Don't have an account? <a href="@Url.Action("SignUp", "Account")">Sign Up</a></p>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PropertyManagement.Models.Message>
+
+<h2>Messages</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Content</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>
+                    @(message.SenderRole == "Tenant"
+                       ? "Tenant: " + @message.SenderId
+                       : "Manager: " + @message.SenderId)
+                </td>
+                <td>
+                    @(message.ReceiverRole == "Tenant"
+                       ? "Tenant: " + @message.ReceiverId
+                       : "Manager: " + @message.ReceiverId)
+                </td>
+                <td>@message.Content</td>
+                <td>@message.Timestamp.ToString("g")</td>
+                <td>
+                    @if (message.ReceiverId == Convert.ToInt32(Session["UserId"]) &&
+                         message.ReceiverRole == Session["Role"].ToString())
+                    {
+                        <a href="@Url.Action("ReplyMessage", "PropertyManager", new { id = message.MessageId })" class="btn btn-primary">Reply</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

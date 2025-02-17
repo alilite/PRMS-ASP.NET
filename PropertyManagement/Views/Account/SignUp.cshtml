@@ -1,0 +1,25 @@
+﻿<h2>Sign Up</h2>
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" />
+
+    <label>Email</label>
+    <input type="email" name="email" class="form-control" />
+
+    <label>Password</label>
+    <input type="password" name="password" class="form-control" />
+
+    <label>Confirm Password</label>
+    <input type="password" name="confirmPassword" class="form-control" />
+
+    <label>Role</label>
+    <select name="role" class="form-control">
+        <option value="Owner">Owner</option>
+        <option value="Tenant">Tenant</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+}
+
+<p>Already have an account? <a href="@Url.Action("Login", "Account")">Login</a></p>
